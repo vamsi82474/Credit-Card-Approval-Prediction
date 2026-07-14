@@ -1,0 +1,211 @@
+/* ============================================================
+   Credit Card Approval Prediction – Main Stylesheet
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6fb;
+  color: #1e1e2e;
+  min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 62px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-brand { font-size: 1.25rem; font-weight: 700; color: #e2b96f; letter-spacing: 0.5px; }
+.nav-links a {
+  color: #cbd5e1; margin-left: 1.5rem; font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #e2b96f; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(135deg, #0f3460 0%, #533483 60%, #e94560 100%);
+  color: #fff;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; }
+.hero-sub { font-size: 1.1rem; opacity: 0.88; max-width: 600px; margin: 0 auto 2rem; line-height: 1.6; }
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #e2b96f, #d4a050);
+  color: #1a1a2e;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 14px rgba(226,185,111,0.4);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(226,185,111,0.5); }
+
+.btn-secondary {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #1e1e2e;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.15s;
+  margin-left: 0.75rem;
+}
+.btn-secondary:hover { background: #cbd5e1; }
+
+/* ---------- Sections ---------- */
+.section { padding: 3.5rem 2rem; max-width: 1100px; margin: 0 auto; }
+.alt-bg { background: #eef2f9; border-radius: 16px; max-width: 100%; padding: 3rem 2rem; }
+.section-title {
+  font-size: 1.75rem; font-weight: 700; text-align: center;
+  margin-bottom: 2rem; color: #0f3460;
+}
+
+/* ---------- Cards ---------- */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+.card {
+  background: #fff; border-radius: 16px;
+  padding: 2rem 1.5rem; text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-4px); }
+.card-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: #0f3460; }
+.card p  { font-size: 0.9rem; color: #475569; line-height: 1.5; }
+
+/* ---------- Workflow Steps ---------- */
+.steps {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 0.5rem;
+}
+.step {
+  background: #fff; border: 2px solid #e2b96f;
+  border-radius: 12px; padding: 1rem 1.25rem;
+  text-align: center; min-width: 100px;
+}
+.step-num {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; background: #0f3460;
+  color: #fff; border-radius: 50%; font-weight: 700;
+  margin: 0 auto 0.5rem;
+}
+.step p { font-size: 0.8rem; font-weight: 600; color: #0f3460; }
+.step-arrow { font-size: 1.5rem; color: #94a3b8; }
+
+/* ---------- ER Table ---------- */
+.er-table-wrap { overflow-x: auto; }
+.er-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.er-table th {
+  background: #0f3460; color: #fff;
+  padding: 0.75rem 1rem; text-align: left;
+}
+.er-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; }
+.er-table tr:hover td { background: #f0f4ff; }
+
+/* ---------- Page Header ---------- */
+.page-header {
+  background: linear-gradient(135deg, #0f3460, #533483);
+  color: #fff; text-align: center; padding: 3rem 1.5rem;
+}
+.page-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+.page-header p  { opacity: 0.85; }
+
+/* ---------- Form ---------- */
+.form-container { max-width: 900px; margin: 0 auto; }
+.form-info-box {
+  background: #fffbeb; border: 1px solid #fcd34d;
+  border-radius: 10px; padding: 1rem 1.25rem;
+  font-size: 0.88rem; margin-bottom: 1.5rem; color: #78350f;
+}
+.form-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem; margin-bottom: 2rem;
+}
+.form-group { display: flex; flex-direction: column; }
+.form-group label {
+  font-size: 0.82rem; font-weight: 600; color: #475569;
+  margin-bottom: 0.35rem;
+}
+.form-group input {
+  border: 1.5px solid #cbd5e1; border-radius: 8px;
+  padding: 0.55rem 0.85rem; font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+.form-group input:focus {
+  outline: none; border-color: #0f3460;
+  box-shadow: 0 0 0 3px rgba(15,52,96,0.1);
+}
+.form-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+
+/* ---------- Result ---------- */
+.result-container { max-width: 640px; margin: 0 auto; text-align: center; }
+.result-card {
+  border-radius: 20px; padding: 3rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.result-card.approved { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border: 2px solid #10b981; }
+.result-card.rejected { background: linear-gradient(135deg, #fee2e2, #fecaca); border: 2px solid #ef4444; }
+.result-card.error    { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #f59e0b; }
+
+.result-icon  { font-size: 4rem; margin-bottom: 1rem; }
+.result-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; color: #1e1e2e; }
+.result-message { font-size: 0.95rem; color: #374151; line-height: 1.6; }
+
+/* Confidence bar */
+.confidence-wrap { margin-top: 1.5rem; }
+.confidence-label { font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 0.4rem; }
+.confidence-bar-bg {
+  background: rgba(0,0,0,0.12); border-radius: 50px; height: 12px; overflow: hidden;
+}
+.confidence-bar {
+  height: 100%; border-radius: 50px;
+  background: linear-gradient(90deg, #0f3460, #533483);
+  transition: width 1s ease;
+}
+.confidence-pct { font-size: 1.3rem; font-weight: 700; margin-top: 0.35rem; color: #0f3460; }
+
+/* Disclaimer */
+.disclaimer {
+  background: #f1f5f9; border-radius: 10px; padding: 1rem 1.25rem;
+  font-size: 0.82rem; color: #64748b; text-align: left; margin-bottom: 1.5rem;
+}
+.result-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ---------- Footer ---------- */
+.footer {
+  background: #1a1a2e; color: #94a3b8;
+  text-align: center; padding: 1.5rem;
+  font-size: 0.85rem; margin-top: 4rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .navbar { padding: 0 1rem; }
+  .hero   { padding: 3rem 1rem; }
+  .steps  { flex-direction: column; }
+  .step-arrow { transform: rotate(90deg); }
+  .form-grid  { grid-template-columns: 1fr; }
+  .btn-secondary { margin-left: 0; }
+}
