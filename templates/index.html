@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predict – Credit Card Approval</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">💳 CC Approval Predictor</div>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('predict_form') }}">Predict</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>Transaction Prediction Form</h1>
+    <p>Enter the transaction features below to get an instant approval decision.</p>
+  </div>
+
+  <!-- FORM -->
+  <section class="section">
+    <div class="form-container">
+      <div class="form-info-box">
+        <strong>ℹ️ Note:</strong> V1–V28 are PCA-transformed confidential features.
+        Amount_Scaled and Time_Scaled are StandardScaler-normalised values of the
+        original Amount and Time columns. Enter values from your dataset row directly.
+      </div>
+
+      <form action="{{ url_for('predict') }}" method="POST" id="predForm">
+        <div class="form-grid">
+          {% for feat in features %}
+          <div class="form-group">
+            <label for="{{ feat }}">{{ labels[feat] }}</label>
+            <input
+              type="number"
+              step="any"
+              id="{{ feat }}"
+              name="{{ feat }}"
+              placeholder="e.g. 0.0"
+              required
+            />
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="submitBtn">
+            🔍 Predict Now
+          </button>
+          <button type="reset" class="btn-secondary">
+            🔄 Reset Form
+          </button>
+          <button type="button" class="btn-secondary" id="sampleBtn">
+            📋 Load Sample (Legitimate)
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Credit Card Approval Prediction System &copy; 2025 | Built with Python, Scikit-learn &amp; Flask</p>
+  </footer>
+
+  <script>
+    // Sample legitimate transaction from the dataset (first row)
+    const sampleLegit = {
+      V1: -1.3598071336738, V2: -0.0727811733098497, V3: 2.53634673796914,
+      V4: 1.37815522427443, V5: -0.338320769942518, V6: 0.462387777762292,
+      V7: 0.239598554061257, V8: 0.0986979012610507, V9: 0.363786969611213,
+      V10: 0.0907941719789316, V11: -0.551599533260813, V12: -0.617800855762348,
+      V13: -0.991389847235408, V14: -0.311169353699879, V15: 1.46817697209427,
+      V16: -0.470400525259478, V17: 0.207971241929242, V18: 0.0257905801985591,
+      V19: 0.403992960255733, V20: 0.251412098239705, V21: -0.018306777944153,
+      V22: 0.277837575558899, V23: -0.110473910188767, V24: 0.0669280749146731,
+      V25: 0.128539358273528, V26: -0.189114843888824, V27: 0.133558376740387,
+      V28: -0.0210530534538215,
+      // Amount=149.62 → StandardScaled ≈ 0.244 | Time=0 → scaled ≈ -1.996
+      Amount_Scaled: 0.244,
+      Time_Scaled: -1.996
+    };
+
+    document.getElementById("sampleBtn").addEventListener("click", () => {
+      for (const [key, val] of Object.entries(sampleLegit)) {
+        const el = document.getElementById(key);
+        if (el) el.value = val;
+      }
+    });
+
+    document.getElementById("predForm").addEventListener("submit", () => {
+      const btn = document.getElementById("submitBtn");
+      btn.textContent = "⏳ Predicting…";
+      btn.disabled = true;
+    });
+  </script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
